@@ -1,0 +1,37 @@
+<table>
+    <thead>
+        <tr>
+            <th>Plot IDs</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Last Login</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {section name=i loop=$users}
+        <tr>
+            <td>
+                {foreach from=$users[i].plots item=plot}
+                    {$plot.id|escape}{if !$plot@last},{/if}
+                {/foreach}
+            </td>
+            <td>{$users[i].first_name|escape}</td>
+            <td>{$users[i].last_name|escape}</td>
+            <td>{$users[i].phone|escape}</td>
+            <td>{$users[i].email|escape}</td>
+            <td>{$users[i].last_login|date_format:"%Y-%m-%d %H:%M:%S"}</td>
+            <td>
+                <i class="icon icon_ellipsis" onclick="common.menu_popup_toggle(this, event);">
+                    <div class="menu_popup">
+                        <div onclick="common.user_edit_window({$users[i].id}, event);">Edit</div>
+                        <div onclick="common.user_delete({$users[i].id}, event);">Delete</div>
+                    </div>
+                </i>
+            </td>
+        </tr>
+    {/section}
+    </tbody>
+</table>

@@ -1,0 +1,15 @@
+<div class="sub_header">
+    <div>
+        <div class="btn_sub" onclick="common.user_edit_window();">Add User</div>
+    </div>
+    <div>
+        <div id="user_paginator">{$user_paginator}</div>
+        <div class="input_group">
+            <i class="icon_search"></i>
+            <input id="user_search" type="text" value="{$user_search}" placeholder="Search Users" oninput="common.search_do('users');">
+        </div>
+    </div>
+</div>
+<div id="user_table">
+    {include file="./partials/users_table.html"}
+</div>
